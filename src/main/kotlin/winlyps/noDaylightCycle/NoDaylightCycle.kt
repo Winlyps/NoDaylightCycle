@@ -14,6 +14,9 @@ class NoDaylightCycle : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoDaylightCycle plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doDaylightCycle", "true")
+            logger.info("NoDaylightCycle plugin has been disabled.")
+        }
     }
 }
